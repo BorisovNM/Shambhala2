@@ -38,4 +38,4 @@ Please note that execution of code may be time-consuming due to harmonization if
 
 ## Output data 
 
-Running this code produces the file `OutputFileName`. Also, it returns a harmonized gene expression matrix
+The function returns a harmonized gene expression matrix
