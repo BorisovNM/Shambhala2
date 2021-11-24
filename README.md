@@ -14,7 +14,7 @@ After it, we took from the CuBlock output only the profile that has to be harmon
 
 The deposited R functuion
 
-`Shambhala2 = function(InputFileName, OutputFileName, PFileName, QFileName, delete_buffer_files = TRUE, k = 5 )` calls MATLAB (R) applications `Shambhala2.m`, `CuBock.m` and `readExpressionData.m`.
+`Shambhala2 = function(InputFileName, PFileName, QFileName, delete_buffer_files = TRUE, k = 5 )` calls MATLAB (R) applications `Shambhala2.m`, `CuBock.m` and `readExpressionData.m`.
 
 `k` is the number of probe clusters for the application of k-means to find probe-cluster partitions. By default it is 5.
   
@@ -34,7 +34,7 @@ MATLAB (R) licence is free for educational institutions. Those who do not have a
 
 ### Expected computation time
 
-Please note that execution of code may be time-consuming due to harmonization if each profile one-by-one. For example, processing the file `Input.csv` takes about a minute at an Ubuntu 20.04.2 LTS machine with Intel® Core™ i7-7700K CPU @ 4.20GHz × 8 CPU's and 31,2 GiB or RAM. Therefore, parallel execution of the code may be a good idea. 
+Please note that execution of code may be time-consuming due to harmonization if each profile one-by-one. For example, processing the file `Input.csv` takes about two minutes at an Ubuntu 20.04.2 LTS machine with Intel® Core™ i7-7700K CPU @ 4.20GHz × 8 CPU's and 31,2 GiB or RAM. Therefore, parallel execution of the code may be a good idea. 
 
 ## Output data 
 
