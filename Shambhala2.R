@@ -1,6 +1,8 @@
 library(matrixStats)
 
-Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, delete_buffer_files = TRUE ) {
+# k (OPTIONAL) is the number of probe clusters for the application of k-means to find probe-cluster partitions. By default it is 5.
+
+Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, delete_buffer_files = TRUE, k = 5 ) {
 
     IFN = InputFileName
     MAS = read.table(IFN, header = TRUE, sep = ",")
@@ -28,8 +30,6 @@ Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, del
     NH = ncol(MAS) - 1
     NP = ncol(P) - 1
 
-    k = 4
-
     args = c(NH,NP,k)
     
     AFN = "args.txt"
@@ -40,8 +40,8 @@ Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, del
     QFN = QFileName
     Q = read.table(QFN, header = TRUE, sep = ",")
 
-    P2FN = "Cu_bis.txt"
-    MAS = read.table(P2FN, header = FALSE, sep = " ")
+    Cu2FN = "Cu_bis.txt"
+    MAS = read.table(Cu2FN, header = FALSE, sep = " ")
 
     MAS = as.matrix(MAS)
 
@@ -88,9 +88,9 @@ Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, del
             file.remove(P1FN) 
         }
     
-        if (file.exists(P2FN)) {
+        if (file.exists(Cu2FN)) {
         #Delete file if it exists
-            file.remove(P2FN) 
+            file.remove(Cu2FN) 
         }
   
         if (file.exists(AFN)) {
@@ -106,4 +106,4 @@ Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, del
     
 }    
    
-Harmonized = Shambhala2("Input.csv", "Output.csv", "P0.csv", "Q0.csv", delete_buffer_files = TRUE) 
+Harmonized = Shambhala2("Input.csv", "Output.csv", "P0.csv", "Q0.csv", delete_buffer_files = TRUE, k = 5) 
