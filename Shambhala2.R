@@ -2,7 +2,7 @@ library(matrixStats)
 
 # k (OPTIONAL) is the number of probe clusters for the application of k-means to find probe-cluster partitions. By default it is 5.
 
-Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, delete_buffer_files = TRUE, k = 5 ) {
+Shambhala2 <- function( InputFileName, PFileName, QFileName, delete_buffer_files = TRUE, k = 5 ) {
 
     IFN = InputFileName
     MAS = read.table(IFN, header = TRUE, sep = ",")
@@ -78,9 +78,6 @@ Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, del
         MAS33[,j] = as.vector(as.numeric(MAS33[,j]))
     } 
 
-    OFN = OutputFileName
-    write.table(as.matrix(MAS33), OFN, col.names = CN, row.names = FALSE, sep =",")
-
     if ( delete_buffer_files ) {
 
         if (file.exists(P1FN)) {
@@ -106,4 +103,8 @@ Shambhala2 <- function( InputFileName, OutputFileName, PFileName, QFileName, del
     
 }    
    
-Harmonized = Shambhala2("Input.csv", "Output.csv", "P0.csv", "Q0.csv", delete_buffer_files = TRUE, k = 5) 
+Harmonized = Shambhala2("Input.csv", "P0.csv", "Q0.csv", delete_buffer_files = TRUE, k = 5) 
+
+OFN = "Output.csv"
+write.table(Harmonized, OFN, col.names = TRUE, row.names = FALSE, sep =",")
+
