@@ -3,11 +3,11 @@
 Shambhala2 is a harmonizer of gene expression profiles obtained via both mRNA microarray hybridization ane next-generation sequencing.
 It coverts all the profiles one-by-one, independently one from another, to a predefined shape that is set by the defnitive dataset `Q`.
 
-To provide reobust result, such conversion is preformed within the auxiliary calibration dataset `P`.
+To provide robust result, such conversion is preformed within the auxiliary calibration dataset `P`.
 
-One-by-one, each profile that needs to be harmonized, is first quantile-normalized (Bolstad et al., 2003, doi:10.1093/bioinformatics/19.2.185) with the dataset `P`. Then the result, `P_prim` is normalized according to CuBlock method (Junet et al, 2021, doi:10.1093/bioinformatics/btab105). Then, from the CuBlock-normalized result (`P_bis`), we take only the profile to be harmonized, and repeat the sheme for another profile.
+One-by-one, each profile that needs to be harmonized, is first quantile-normalized (Bolstad et al., 2003, doi:10.1093/bioinformatics/19.2.185) with the dataset `P`. Then the result, `P_prim` is normalized according to CuBlock method (Junet et al, 2021, doi:10.1093/bioinformatics/btab105). Then, from the CuBlock-normalized result (`P_bis`), we take only the profile to be harmonized, and rescale gene expression level. to set the mean and standard deviation of the expression level of each gene `g` equal to mean value and standard deviation of gene `g` expression level in the definitive dataset `Q`.
 
-After it, we took from the CuBlock output only the profile that has to be harmonized, and repeat the procedure for all other profiles that have to be harmonized. This produces the dataset `Cu_bis`, which is then rescaled, to set the mean and standard deviation of the expression level of each gene `g` equal to mean value and standard deviation of gene `g` expression level in the definitive dataset `Q`.
+After it, we repeat the procedure for all other profiles that have to be harmonized.
 
 
 ## Executable scripts
