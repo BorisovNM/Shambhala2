@@ -14,29 +14,23 @@ SN = inData.SamplesName;
 NS = length(SN);
     
 for ( i = 1:NH ) 
-    
     message = sprintf('Harmonizing sample %d out of %d',i,NH);
-        
     disp(message);
         
     i0 = i;
-        
     for ( jjj = 1:NP )             
         i0 = [i0 (jjj+NH)];
     end   
         
     EXP = Exp(:,i0);
-        
     EXP = quantilenorm(EXP);
         
-    dataN = CuBlock(EXP,[],k);
+    dataN = CuBlock(real(EXP),[],k);
 
     log2e = log2(exp(1));
-
     DataN = dataN/log2e;
 
     EXPN = exp(DataN)-1;
-        
     vecN = EXPN(:,1);
         
     if ( i == 1 ) 
